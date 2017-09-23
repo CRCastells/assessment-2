@@ -4,38 +4,51 @@ $(function() {
 
 let player1 ={
 	car: $('<img>').attr('src', 'assets/blue-car.png'),
-	pos: 84
+	pos: 88,
+	name: "Player 1"
+
 } 
+
 
 let player2 ={
 	car: $('<img>').attr('src', 'assets/green-car.png'),
-	pos: 84
+	pos: 88,
+	name: "Player 2"
 }   
 
-player1.car.css('position', 'absolute');
-player2.car.css('position', 'absolute');
+player1.car.css('position', 'fixed');
+player2.car.css('position', 'fixed');
 
 $('body').append(player1.car,player2.car);
 
-player1.car.css('top', '500px');
-player2.car.css('top', '382px');
-player1.car.css('right', '84%');
-player2.car.css('right', '84%');
+player1.car.css('top', '382px');
+player2.car.css('top', '500px');
+player1.car.css('right', '88%');
+player2.car.css('right', '88%');
 
-function move(){
-	let currentPos = this.pos;
-	currentPos -= 2;
-	this.pos = currentPos;
-	this.car.css('right', currentPos + "%");
+function move(obj){
+	obj.pos = obj.pos - 2;
+	obj.car.css('right', obj.pos + "%");
+	hasWon(obj);
 }
 
-$('window').keypress(function(event) {
-console.log(event.which);
+function hasWon(obj) {
+	if (obj.pos === 0){
+		alert(obj.name + "Has won the race!");
+	}
+}
+
+$(document).keyup(function(event) {
+	if (event.key === 'z' || event.key === 'x'){
+		move(player1);
+	}
 });
 
-
-
-
+$(document).keyup(function(event) {
+	if (event.key === 'k' || event.key === 'l'){
+		move(player2);
+	}
+});
 
 
 

@@ -76,12 +76,14 @@ img {
 
 td{
 	border: 2px solid black;
+	color: black;
 }
 
 table {
 	height: 100px;
 	width: 70px;
 	float: right;
+	background: white;
 }
 
 
