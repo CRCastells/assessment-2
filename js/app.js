@@ -36,17 +36,15 @@ function move(obj){
 
 function hasWon(obj) {
 	if (obj.pos === 0){
-		if (obj.winCount % 3 === 0 && obj.winCount != 0){
-			alert(obj.name + " has won a best of three!");
+		if ((obj.winCount+1) % 3 === 0 && obj.winCount != 0){
+			alert(obj.name + " has won a hattrick!");
 		} else {
 			alert(obj.name + " has won the race!");
 		}
 		if (obj.name === "Player 1"){
-			player1.winCount++;
-			console.log($('#p1w').html(player1.winCount));
+			$('#p1w').html(++player1.winCount);
 		} else {
-
-			console.log($('#p2w').html(++player2.winCount));
+			$('#p2w').html(++player2.winCount);
 		}
 		player1.car.css('right', '88%');
 		player2.car.css('right', '88%');
