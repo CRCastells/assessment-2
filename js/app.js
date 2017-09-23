@@ -5,16 +5,18 @@ $(function() {
 let player1 ={
 	car: $('<img>').attr('src', 'assets/blue-car.png'),
 	pos: 88,
-	name: "Player 1"
-
-} 
+	name: "Player 1",
+	winCount: 0
+};
 
 
 let player2 ={
 	car: $('<img>').attr('src', 'assets/green-car.png'),
 	pos: 88,
-	name: "Player 2"
-}   
+	name: "Player 2",
+	winCount: 0
+
+} ; 
 
 player1.car.css('position', 'fixed');
 player2.car.css('position', 'fixed');
@@ -34,7 +36,23 @@ function move(obj){
 
 function hasWon(obj) {
 	if (obj.pos === 0){
-		alert(obj.name + "Has won the race!");
+		if (obj.winCount % 3 === 0 && obj.winCount != 0){
+			alert(obj.name + " has won a best of three!");
+		} else {
+			alert(obj.name + " has won the race!");
+		}
+		if (obj.name === "Player 1"){
+			player1.winCount++;
+			console.log($('#p1w').html(player1.winCount));
+		} else {
+
+			console.log($('#p2w').html(++player2.winCount));
+		}
+		player1.car.css('right', '88%');
+		player2.car.css('right', '88%');
+		player1.pos = 88;
+		player2.pos = 88;
+
 	}
 }
 
