@@ -6,7 +6,9 @@ let player1 ={
 	car: $('<img>').attr('src', 'assets/blue-car.png'),
 	pos: 88,
 	name: "Player 1",
-	winCount: 0
+	winCount: 0,
+	altKey: false
+
 };
 
 
@@ -14,7 +16,8 @@ let player2 ={
 	car: $('<img>').attr('src', 'assets/green-car.png'),
 	pos: 88,
 	name: "Player 2",
-	winCount: 0
+	winCount: 0,
+	altKey: false
 
 } ; 
 
@@ -55,15 +58,31 @@ function hasWon(obj) {
 }
 
 $(document).keyup(function(event) {
-	if (event.key === 'z' || event.key === 'x'){
-		move(player1);
+	if (player1.altKey){
+		if (event.key === 'x'){
+			move(player1);
+			player1.altKey = false;
+		}
+	}
+	else if (event.key === 'z'){
+			move(player1);
+			player1.altKey = true;
 	}
 });
 
 $(document).keyup(function(event) {
-	if (event.key === 'k' || event.key === 'l'){
-		move(player2);
+	if (player2.altKey){
+		if (event.key === 'l'){
+			move(player2);
+			player2.altKey = false;
+		}
 	}
+	else if (event.key === 'k'){
+			move(player2);
+			player2.altKey = true;
+	}
+	
+
 });
 
 
