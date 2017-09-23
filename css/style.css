@@ -18,7 +18,7 @@ header {
 
 .center {
     margin: 70px auto;
-    width: 500px;
+    max-width: 500px;
     display: block;
     font-weight: bold;
     color: white;
@@ -89,7 +89,11 @@ table {
 
 /* index.html does not need to have a media query for tablet. it is already small enough to fit. */
 
-
+@media (max-width: 768px){
+	.main {
+		background: #ccc;
+	}
+}
 
 
 
